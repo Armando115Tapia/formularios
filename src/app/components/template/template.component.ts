@@ -12,8 +12,18 @@ export class TemplateComponent {
   usuario: Object = {
     nombre: null,
     apellido: null,
-    email: null
+    email: null,
+    pais: "",
+    sexo: "Masculino",
+    acepta: false
   }
+
+  paises = [
+    {codigo:'ECU', nombre: "Ecuador"},
+    {codigo:'CRI', nombre: "Costa Rica"},
+    {codigo:'ESP', nombre: "España"}];
+
+    sexos: string[] = ['Masculino', 'Femenino', 'Sin definir']
   constructor() { }
 
   guardar(forma: NgForm){

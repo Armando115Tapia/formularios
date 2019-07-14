@@ -64,15 +64,87 @@
     </div>
   </div>
 
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Pais</label>
+    <div class="input-group col-md-8">
+      <select
+              class="form control"
+              [(ngModel)]="usuario.pais"
+              name="pais" >
+        <option value="">Seleccione un pais</option>
+        <option *ngFor="let pais of paises" [value]="pais.codigo">{{pais.nombre}}</option>
+
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Sexo</label>
+    <div class="input-group col-md-8">
+
+      <label *ngFor="let sex of sexos" class="custom-control custom-radio">
+        <input
+                [(ngModel)]="usuario.sexo"
+                name="sexo"
+                type="radio"
+                [value]="sex"
+                class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description"> {{sex}} </span>
+      </label>
+
+      <!--
+      <label class="custom-control custom-radio">
+          <input
+                  [(ngModel)]="usuario.sexo"
+                  name="sexo"
+                  type="radio"
+                  value="Femenino"
+                  class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Femenino</span>
+        </label>
+        -->
+    </div>
+
+
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label"></label>
+    <div class="col-md-8"></div>
+        <label class="custom-control custom-checkbox">
+          <input
+                  type="checkbox"
+                  [(ngModel)]="usuario.acepta"
+                  name="acepta"
+                  required
+                  class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Acepta</span>
+        </label>
+
+  </div>
 
 
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
-      <button type="submit" class="btn btn-outline-primary">
+      <!--[disabled]="!forma.valid"-->
+
+      <button
+              type="submit"
+              class="btn btn-outline-primary"
+              [disabled]="!forma.valid"
+              >
         Guardar
       </button>
     </div>
   </div>
 
 </form>
+
+<pre>
+  {{usuario | json}}
+</pre>
