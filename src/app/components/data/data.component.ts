@@ -10,18 +10,36 @@ import { variable } from '@angular/compiler/src/output/output_ast';
 export class DataComponent {
 
   forma: FormGroup;
+   usuario: Object = {
+     nombreCompleto : {
+       nombre: 'Armando',
+       apellido: 'Tapia'
+     },
+     correo: 'armandotapia115@hotmail.com'
+   }
+
   constructor() {
     this.forma = new FormGroup({
-      'nombre': new FormControl('', [
-                                      Validators.required,
-                                      Validators.minLength(5)
-                                    ]),
-      'apellido': new FormControl('', Validators.required),
+      'nombreCompleto': new FormGroup({
+                           'nombre': new FormControl('', [
+                                                Validators.required,
+                                                Validators.minLength(5)
+        ]),
+                            'apellido': new FormControl('', Validators.required),
+       }),
+
+
+
       'correo': new FormControl('', [
                                     Validators.required,
                                     Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")])
     });
+
+    this.forma.setValue(this.usuario);
+
   }
+
+
 
   guardarCambios(){
     console.log("Forma: ",this.forma);
