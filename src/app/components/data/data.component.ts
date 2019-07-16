@@ -49,6 +49,22 @@ export class DataComponent {
       this.noIgual.bind(this.forma)
     ])
 
+    // observador
+    this.forma.valueChanges.subscribe(
+      (data)=> console.log(data));
+
+    this.forma.controls['username'].valueChanges.subscribe(
+        (data) => {
+          console.log(data);
+        }
+    );
+
+
+    this.forma.controls['username'].statusChanges.subscribe(
+      (data) => {
+        console.log(data);
+      }
+  );
   }
 
   agregarPasatiempo(){
